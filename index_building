@@ -1,0 +1,32 @@
+
+#!/bin/bash
+###reference: https://github.com/MurakawaLab/ReapTEC
+
+fasta=GRCh37.primary_assembly.genome.fa
+gtf=gencode.v40lift37.annotation.gtf
+filter_gtf=gencode.v40lift37.annotation.filter.gtf
+
+# ~/data/cellranger-8.0.1/cellranger mkgtf $gtf $filter_gtf  \
+                 # --attribute=gene_type:protein_coding \
+                 # --attribute=gene_type:lincRNA \
+                 # --attribute=gene_type:antisense \
+                 # --attribute=gene_type:IG_LV_gene \
+                 # --attribute=gene_type:IG_V_gene \
+                 # --attribute=gene_type:IG_V_pseudogene \
+                 # --attribute=gene_type:IG_D_gene \
+                 # --attribute=gene_type:IG_J_gene \
+                 # --attribute=gene_type:IG_J_pseudogene \
+                 # --attribute=gene_type:IG_C_gene \
+                 # --attribute=gene_type:IG_C_pseudogene \
+                 # --attribute=gene_type:TR_V_gene \
+                 # --attribute=gene_type:TR_V_pseudogene \
+                 # --attribute=gene_type:TR_D_gene \
+                 # --attribute=gene_type:TR_J_gene \
+                 # --attribute=gene_type:TR_J_pseudogene \
+                 # --attribute=gene_type:TR_C_gene
+
+
+~/data/cellranger-8.0.1/cellranger mkref --genome=GRCh19 \
+                --fasta=$fasta \
+                --genes=$filter_gtf \
+                --ref-version=hg19
